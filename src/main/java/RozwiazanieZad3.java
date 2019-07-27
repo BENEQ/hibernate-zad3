@@ -1,9 +1,13 @@
 import entity.*;
+import org.hibernate.Session;
+
+import java.util.List;
 
 public class RozwiazanieZad3 {
 
     public static void main(String[] args) {
-        DAO dao = new DAO();
+        Session session = HibernateUtil.getSessionFactory().openSession();
+        session.beginTransaction();
         Adres adres1 = new Adres("Gdanska", "2", "13", "80-131", "Gdansk");
         Adres adres2 = new Adres("Dluga", "21", "6", "80-561", "Gdansk");
         Adres adres3 = new Adres("Wiejska", "2a", "23", "86-541", "Sopot");
@@ -39,43 +43,13 @@ public class RozwiazanieZad3 {
         klient1.getProdukty().add(produkt3);
         klient1.getProdukty().add(produkt4);
 
-        klient2.getProdukty().add(produkt5);
-        klient2.getProdukty().add(produkt6);
-        klient2.getProdukty().add(produkt7);
-
-        klient3.getProdukty().add(produkt8);
-        klient3.getProdukty().add(produkt9);
-        klient3.getProdukty().add(produkt10);
-        klient3.getProdukty().add(produkt3);
-
-        klient4.getProdukty().add(produkt4);
-
-        klient5.getProdukty().add(produkt1);
-        klient5.getProdukty().add(produkt2);
-        klient5.getProdukty().add(produkt3);
-
-        dao.newObject(producent1);
-        dao.newObject(producent2);
-
-        dao.newObject(kategoria1);
-        dao.newObject(kategoria2);
-        dao.newObject(kategoria3);
-
-        dao.newObject(produkt1);
-        dao.newObject(produkt2);
-        dao.newObject(produkt3);
-        dao.newObject(produkt4);
-        dao.newObject(produkt5);
-        dao.newObject(produkt6);
-        dao.newObject(produkt7);
-        dao.newObject(produkt8);
-        dao.newObject(produkt9);
-        dao.newObject(produkt10);
-
-        dao.newObject(klient1);
-        dao.newObject(klient2);
+        session.persist(klient1);
+/*        dao.newObject(klient2);
         dao.newObject(klient3);
         dao.newObject(klient4);
-        dao.newObject(klient5);
+        dao.newObject(klient5);*/
+
+        session.flush();
+        session.close();
     }
 }

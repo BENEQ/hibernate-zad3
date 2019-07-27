@@ -18,14 +18,18 @@ public class DAO {
 
     public <T> T update(T object) {
         Session session = HibernateUtil.getSessionFactory().openSession();
+        session.beginTransaction();
         object = (T) session.merge(object);
+        session.flush();
         session.close();
         return object;
     }
 
     public <T> void delety(T object) {
         Session session = HibernateUtil.getSessionFactory().openSession();
+        session.beginTransaction();
         session.delete(object);
+        session.flush();
         session.close();
     }
 }

@@ -14,13 +14,13 @@ public class Produkt {
     private String nazwa;
     @Column
     private Double cena;
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.PERSIST)
     @JoinColumn(name = "id_producenta")
     private Producent producent;
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.PERSIST)
     @JoinColumn(name = "id_kategorii")
     private KategoriaProduktu kategoriaProduktu;
-    @ManyToMany(mappedBy = "produkty")
+    @ManyToMany(mappedBy = "produkty",cascade = CascadeType.PERSIST)
     private List<Klient> klienci;
 
     public Produkt() {
@@ -71,5 +71,16 @@ public class Produkt {
         this.cena = cena;
         this.producent = producent;
         this.kategoriaProduktu = kategoriaProduktu;
+    }
+
+    @Override
+    public String toString() {
+        return "Produkt{" +
+                "id=" + id +
+                ", nazwa='" + nazwa + '\'' +
+                ", cena=" + cena +
+                ", producent=" + producent +
+                ", kategoriaProduktu=" + kategoriaProduktu +
+                '}';
     }
 }
