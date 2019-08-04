@@ -43,11 +43,26 @@ public class RozwiazanieZad3 {
         klient1.getProdukty().add(produkt3);
         klient1.getProdukty().add(produkt4);
 
+        klient2.getProdukty().add(produkt1);
+        klient2.getProdukty().add(produkt2);
+        klient2.getProdukty().add(produkt3);
+        klient2.getProdukty().add(produkt4);
+
+        klient3.getProdukty().add(produkt1);
+        klient3.getProdukty().add(produkt2);
+        klient3.getProdukty().add(produkt3);
+        klient3.getProdukty().add(produkt4);
+
+        klient4.getProdukty().add(produkt1);
+        klient4.getProdukty().add(produkt2);
+        klient4.getProdukty().add(produkt3);
+        klient4.getProdukty().add(produkt4);
+
         session.persist(klient1);
-/*        dao.newObject(klient2);
-        dao.newObject(klient3);
-        dao.newObject(klient4);
-        dao.newObject(klient5);*/
+        session.persist(klient2);
+        session.persist(klient3);
+        session.persist(klient4);
+        session.persist(klient5);
 
         session.flush();
         session.close();
