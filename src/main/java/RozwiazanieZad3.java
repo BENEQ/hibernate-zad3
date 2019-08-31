@@ -8,17 +8,19 @@ public class RozwiazanieZad3 {
     public static void main(String[] args) {
         Session session = HibernateUtil.getSessionFactory().openSession();
         session.beginTransaction();
-        Adres adres1 = new Adres("Gdanska", "2", "13", "80-131", "Gdansk");
-        Adres adres2 = new Adres("Dluga", "21", "6", "80-561", "Gdansk");
-        Adres adres3 = new Adres("Wiejska", "2a", "23", "86-541", "Sopot");
-        Adres adres4 = new Adres("Polnocna", "5", "3", "83-131", "Gdynia");
-        Adres adres5 = new Adres("Grunwaldzka", "3", "16", "80-125", "Rewa");
+        Klient klient1 = new Klient("Jan", "Niezbedny", "123456789");
+        Klient klient2 = new Klient("Adam", "Nowy", "123456781");
+        Klient klient3 = new Klient("Pawel", "Adamski", "123456782" );
+        Klient klient4 = new Klient("Anna", "Kowalska", "123456222");
+        Klient klient5 = new Klient("Kasia", "Nowak", "123453333");
 
-        Klient klient1 = new Klient("Jan", "Niezbedny", "123456789", adres1);
-        Klient klient2 = new Klient("Adam", "Nowy", "123456781", adres2);
-        Klient klient3 = new Klient("Pawel", "Adamski", "123456782", adres3);
-        Klient klient4 = new Klient("Anna", "Kowalska", "123456222", adres4);
-        Klient klient5 = new Klient("Kasia", "Nowak", "123453333", adres5);
+        Adres adres1 = new Adres("Gdanska", "2", "13", "80-131", "Gdansk",klient1);
+        Adres adres2 = new Adres("Dluga", "21", "6", "80-561", "Gdansk",klient2);
+        Adres adres3 = new Adres("Wiejska", "2a", "23", "86-541", "Sopot",klient3);
+        Adres adres4 = new Adres("Polnocna", "5", "3", "83-131", "Gdynia",klient4);
+        Adres adres5 = new Adres("Grunwaldzka", "3", "16", "80-125", "Rewa",klient5);
+
+
 
         KategoriaProduktu kategoria1 = new KategoriaProduktu("ksiazka techniczna");
         KategoriaProduktu kategoria2 = new KategoriaProduktu("ksiazka fantastyczna");
@@ -58,11 +60,11 @@ public class RozwiazanieZad3 {
         klient4.getProdukty().add(produkt3);
         klient4.getProdukty().add(produkt4);
 
-        session.persist(klient1);
-        session.persist(klient2);
-        session.persist(klient3);
-        session.persist(klient4);
-        session.persist(klient5);
+        session.persist(adres1);
+        session.persist(adres2);
+        session.persist(adres3);
+        session.persist(adres4);
+        session.persist(adres5);
 
         session.flush();
         session.close();

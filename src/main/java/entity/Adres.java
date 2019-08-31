@@ -19,7 +19,7 @@ public class Adres {
     private String kodPocztowy;
     @Column
     private String miejscowosc;
-    @OneToOne
+    @OneToOne(cascade = CascadeType.PERSIST)
     @JoinColumn(name = "id_klient", unique = true)
     private Klient klient;
 
@@ -82,12 +82,13 @@ public class Adres {
         this.klient = klient;
     }
 
-    public Adres(String ulica, String nrDomu, String nrMieszkania, String kodPocztowy, String miejscowosc) {
+    public Adres(String ulica, String nrDomu, String nrMieszkania, String kodPocztowy, String miejscowosc,Klient klient) {
         this.ulica = ulica;
         this.nrDomu = nrDomu;
         this.nrMieszkania = nrMieszkania;
         this.kodPocztowy = kodPocztowy;
         this.miejscowosc = miejscowosc;
+        this.klient = klient;
     }
 }
 

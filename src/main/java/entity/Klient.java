@@ -17,7 +17,7 @@ public class Klient {
     private String nazwisko;
     @Column
     private String telefon;
-    @OneToOne(mappedBy = "klient", cascade = CascadeType.PERSIST)
+    @OneToOne(mappedBy = "klient")
     private Adres adres;
     @ManyToMany(fetch = FetchType.EAGER,cascade = CascadeType.PERSIST)
     @JoinTable(name = "Klinet_produkt",
@@ -76,10 +76,9 @@ public class Klient {
     }
 
 
-    public Klient(String imie, String nazwisko, String telefon, Adres adres) {
+    public Klient(String imie, String nazwisko, String telefon) {
         this.imie = imie;
         this.nazwisko = nazwisko;
         this.telefon = telefon;
-        this.adres = adres;
     }
 }
