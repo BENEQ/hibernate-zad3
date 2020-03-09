@@ -5,7 +5,7 @@ public class DAO {
         Session session = HibernateUtil.getSessionFactory().openSession();
         session.beginTransaction();
         session.persist(object);
-        session.flush();
+        session.getTransaction().commit();
         session.close();
     }
 
@@ -20,7 +20,7 @@ public class DAO {
         Session session = HibernateUtil.getSessionFactory().openSession();
         session.beginTransaction();
         object = (T) session.merge(object);
-        session.flush();
+        session.getTransaction().commit();
         session.close();
         return object;
     }
@@ -29,7 +29,7 @@ public class DAO {
         Session session = HibernateUtil.getSessionFactory().openSession();
         session.beginTransaction();
         session.delete(object);
-        session.flush();
+        session.getTransaction().commit();
         session.close();
     }
 }
